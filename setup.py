@@ -2,7 +2,7 @@ from setuptools import setup
 from version import __version__
 
 
-with open("README.md") as readme:
+with open("README.rst") as readme:
     setup(
         name='pycmds',
         version=__version__,
