@@ -1,17 +1,17 @@
-# PyCmd
+# PyCmds
 
 A wrapper around the [Click](http://click.pocoo.org/5/)
-library for Python. PyCmd makes it easier to use Click's command execution
+library for Python. PyCmds makes it easier to use Click's command execution
 framework independently of the command line (i.e. executing Click
 `Command`s in an existing Python instance.)
 
-To accompany this, PyCmd adds a `CmdCompleter` class which implements the
+To accompany this, PyCmds adds a `CmdCompleter` class which implements the
 `Completer` interface from the
 [python-prompt-toolkit](https://github.com/jonathanslenders/python-prompt-toolkit).
 Using this class, one may create a python-prompt-toolkit interface with
 intelligent (see below) autocompletion for Click `Command`s and `Option`s.
 
-Also, PyCmd adds an `AliasGroup` class to allow the assignment of aliases
+Also, PyCmds adds an `AliasGroup` class to allow the assignment of aliases
 to Click `Command`s.
 
 ### `CmdCompleter` Features

@@ -2,7 +2,7 @@ from setuptools import setup
 from version import __version__
 
 setup(
-    name='pycmd',
+    name='pycmds',
     version=__version__,
     packages=['pycmd'],
     url='https://github.com/Ro5bert/pycmd',
