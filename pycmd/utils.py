@@ -1,16 +1,26 @@
 
 """
-TODO
+Miscellaneous utility classes/functions.
 """
 
 
 class DotDict(dict):
+    """
+    A dictionary that maps attribute access to item access.
+    """
 
     def __init__(self, *args, dynamic=True, **kwargs):
+        """
+        :param args: A single Python dictionary, otherwise as specified in dict's documentation.
+        :param dynamic: Whether to create empty DotDicts as they are fetched, if they do not exist. E.g.
+            "mydict.key1.key2.key3 = 123" would create "key1" and "key2" dynamically if they did not already exist.
+        """
+        # Notice we use "type" instead of "isinstance" because "type" doesn't check inheritance.
         if len(args) == 1 and type(args[0]) == dict:
             d = args[0]
             for k, v in d.items():
                 if type(v) == dict:
+                    # Notice we use the same value for dynamic.
                     v = DotDict(v, dynamic=dynamic)
                     d[k] = v
         super().__init__(*args, **kwargs)
@@ -18,13 +28,17 @@ class DotDict(dict):
 
     def __getitem__(self, item):
         if self.dynamic and item not in self:
+            # Dynamically create a new DotDict.
             val = DotDict()
             self.__setitem__(item, val)
             return val
+        # Otherwise simply attempt to return the value.
         return super().__getitem__(item)
 
     def __setitem__(self, key, value):
+        # Make sure if we set a dictionary, we first cast it to a DotDict.
         if type(value) == dict:
+            # Notice we use the same value for dynamic.
             value = DotDict(value, dynamic=self.dynamic)
         super().__setitem__(key, value)
 
@@ -32,6 +46,8 @@ class DotDict(dict):
         try:
             return self.__getitem__(item)
         except KeyError as e:
+            # This error resulted from attribute access, therefore reraise it as an AttributeError.
+            # After all, getting a KeyError from getattr doesn't make any sense.
             raise AttributeError(repr(item)) from e
 
     def __setattr__(self, key, value):
@@ -41,6 +57,8 @@ class DotDict(dict):
         try:
             self.__delitem__(item)
         except KeyError as e:
+            # This error resulted from attribute access, therefore reraise it as an AttributeError.
+            # After all, getting a KeyError from getattr doesn't make any sense.
             raise AttributeError(repr(item)) from e
 
     def __repr__(self):
@@ -48,6 +66,12 @@ class DotDict(dict):
 
 
 def index_by_iterable(obj, iterable):
+    """
+    Index the given object iteratively with values from the given iterable.
+    :param obj: the object to index.
+    :param iterable: The iterable to get keys from.
+    :return: The value resulting after all the indexing.
+    """
     item = obj
     for i in iterable:
         item = item[i]
@@ -78,7 +102,12 @@ def nested_container_cast(obj, to, from_=list, append_func="append"):
 
 
 def cast(**casts):
+    """
+    A decorator which may be applied to a function to cast incoming arguments.
+    :param casts: A dictionary in the form {<parameter_name>: <casting_function/type>}
+    """
     import inspect
+    import functools
 
     def outer(func):
         params = list(inspect.signature(func).parameters.items())
@@ -88,6 +117,7 @@ def cast(**casts):
                 vargs_idx = idx
                 break
 
+        @functools.wraps(func)
         def inner(*args, **kwargs):
             args = list(args)
             idx = 0

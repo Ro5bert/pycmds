@@ -1,6 +1,6 @@
 
 """
-TODO
+Wrapper around Click python library.
 """
 
 
@@ -23,6 +23,3 @@ __all__ = [
     # utils.py
     "cast"
 ]
-
-
-__version__ = "1.0"
