@@ -4,8 +4,8 @@ from version import __version__
 setup(
     name='pycmds',
     version=__version__,
-    packages=['pycmd'],
-    url='https://github.com/Ro5bert/pycmd',
+    packages=['pycmds'],
+    url='https://github.com/Ro5bert/pycmds',
     license='MIT',
     author='Robert Russell',
     author_email='robertrussell.72001@gmail.com',

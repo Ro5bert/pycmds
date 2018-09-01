@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pycmds
+Version: 1.0
+Summary: Wrapper around Click python library
+Home-page: https://github.com/Ro5bert/pycmd
+Author: Robert Russell
+Author-email: robertrussell.72001@gmail.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
