@@ -1,2 +1,5 @@
 **/.idea
 **/__pycache__
+pycmds.egg-info
+dist/
+build/
