@@ -4,7 +4,7 @@ PyCmds
 A wrapper around the `Click <http://click.pocoo.org/5/>`_
 library for Python. PyCmds makes it easier to use Click's command execution
 framework independently of the command line (i.e. executing Click
-``Command``s in an existing Python instance.)
+``Command``\s in an existing Python instance.)
 
 To accompany this, PyCmds adds a ``CmdCompleter`` class which implements the
 ``Completer`` interface from the
