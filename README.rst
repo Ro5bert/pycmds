@@ -10,10 +10,10 @@ To accompany this, PyCmds adds a ``CmdCompleter`` class which implements the
 ``Completer`` interface from the
 `python-prompt-toolkit <https://github.com/jonathanslenders/python-prompt-toolkit>`_.
 Using this class, one may create a python-prompt-toolkit interface with
-intelligent (see below) autocompletion for Click ``Command``s and ``Option``s.
+intelligent (see below) autocompletion for Click ``Command``\s and ``Option``\s.
 
 Also, PyCmds adds an ``AliasGroup`` class to allow the assignment of aliases
-to Click ``Command``s.
+to Click ``Command``\s.
 
 ``CmdCompleter`` Features
 -------------------------
