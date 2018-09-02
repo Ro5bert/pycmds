@@ -8,7 +8,7 @@ framework independently of the command line (i.e. executing Click
 
 To accompany this, PyCmds adds a ``CmdCompleter`` class which implements the
 ``Completer`` interface from the
-`python-prompt-toolkit <(https://github.com/jonathanslenders/python-prompt-toolkit)>`_.
+`python-prompt-toolkit <https://github.com/jonathanslenders/python-prompt-toolkit>`_.
 Using this class, one may create a python-prompt-toolkit interface with
 intelligent (see below) autocompletion for Click ``Command``s and ``Option``s.
 
