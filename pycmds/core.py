@@ -128,6 +128,12 @@ class AliasGroup(click.Group):
 
 
 class MutuallyExclusiveOption(click.Option):
+    """
+    Class that supports mutually exclusive options. Use by setting the "cls" keyword argument in the click.option
+    decorator to this class and providing a keyword argument called "mutually_exclusive" with a list of option names.
+    This implementation was borrowed (and slightly modified) from StackOverflow user "Jacob" at
+    "https://stackoverflow.com/questions/37310718/mutually-exclusive-option-groups-in-python-click".
+    """
 
     def __init__(self, *args, **kwargs):
         self.mutually_exclusive = set(kwargs.pop("mutually_exclusive", []))
